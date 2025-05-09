@@ -92,21 +92,6 @@ Join me as I stumble through errors, have "aha!" moments, and gradually level up
 
 ---
 
-## How to Navigate This Repo
-
-1. **Phase-Based Learning**: 
-   - Each phase has its own directory
-   - Projects get progressively harder (`/phase1/beginner` → `/phase4/expert`)
-
-2. **Progress Tracking**:
-   - `LEARNINGS.md` in each folder documents key insights
-   - `/blog` contains technical writeups
-
-3. **Recreate Projects**:
-   ```bash
-   conda env create -f environment.yml
-   python -m phaseX.projectY.train
-
 
 ## Join the Journey!
 
