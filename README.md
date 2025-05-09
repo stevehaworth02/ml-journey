@@ -1,6 +1,6 @@
 # ML Journey Repository 🌱➡️🌲
 
-## Introduction: My Learning Story
+## My Learning Story
 
 Welcome to my machine learning journey! This repository is more than just code—it's a living document of my growth as a Python developer and ML practitioner. Here, you'll find:
 
