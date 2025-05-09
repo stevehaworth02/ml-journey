@@ -1,4 +1,4 @@
-# ML Journey Repository 🌱➡️🌲
+# Welcome to my ML Journey 🌱➡️🌲
 
 ## My Learning Story
 
