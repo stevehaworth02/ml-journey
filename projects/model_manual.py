@@ -17,6 +17,7 @@ print(f"Columns: {df.columns}\n Rows: {len(df)}")
 X = df[["area", "bathrooms"]].to_numpy()
 y = df["price"].to_numpy()
 X = normalize(X)
+y = normalize(y)
 print(f"Feature Matrix Dimensions: {X.shape}\n Feature Matrix X: {X[0:5]}")
 # === 3. Train/Test Split ===
 # - Use train_test_split from sklearn.model_selection (just for splitting)
@@ -28,7 +29,7 @@ w = np.zeros(2)
 b = 0.0
 print(w)
 print(b)
-lr = 1e3
+lr = 1e-3
 epochs = 10
 # === 5. Define functions ===
 # - hypothesis(X, w, b): returns predicted y (X @ w + b)
@@ -72,7 +73,11 @@ plt.show()
 # - After training, compute final MSE on test set
 # - Plot predictions vs actual prices
 # - Plot loss over time if you tracked it
-
+y_pred_test = hypothesis(X_test, w, b)
+test_loss = compute_loss(y_pred_test, y_test)
+print(test_loss)
 # === 8. Wrap up ===
 # - Print learned weights and bias
 # - Optionally compare with scikit-learn's LinearRegression
+print("Min price:", np.min(y))
+print("Max price:", np.max(y))
