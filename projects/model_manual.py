@@ -24,18 +24,27 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random
 # === 4. Initialize parameters ===
 # - Initialize weights (w) and bias (b) to 0 or small random values
 # - Choose learning rate (alpha) and number of epochs
-w = np.zeros((1, 2))
-b = np.zeros((1,2))
+w = np.zeros(2)
+b = 0.0
 print(w)
 print(b)
 lr = 1e3
 epochs = 10
-
 # === 5. Define functions ===
 # - hypothesis(X, w, b): returns predicted y (X @ w + b)
 # - compute_loss(y_pred, y_true): return MSE
 # - compute_gradients(X, y, y_pred): return dw and db
-
+def hypothesis(input_matrix, weight_vector, bias_vector):
+    y_pred = input_matrix @ weight_vector.T + bias_vector
+    return y_pred
+def compute_loss(predicted, actual):
+    loss = np.mean(predicted - actual)**2
+    return loss
+def compute_gradient(X, y, y_pred):
+    error = y_pred - y
+    dw = ((1/len(X)) * (error.T @ X))
+    bw = np.mean(error)
+    return dw, bw
 # === 6. Training loop ===
 # for each epoch:
 #   - make predictions
@@ -43,6 +52,21 @@ epochs = 10
 #   - compute gradients
 #   - update weights and bias
 #   - (optional) store loss for plotting
+losses = []
+for epoch in range(epochs):
+    predicted_y = hypothesis(X_train, w, b)
+    loss = compute_loss(predicted_y, y_train)
+    dw, bw = compute_gradient(X_train, y_train, predicted_y)
+    w -= lr * dw
+    b -= lr * bw
+    losses.append(loss)
+    print(f"Epoch {epoch + 1}: Loss = {loss:.4f}")
+
+plt.plot(range(epochs), losses)
+plt.xlabel("Epoch")
+plt.ylabel("Loss")
+plt.grid(True)
+plt.show()
 
 # === 7. Evaluate ===
 # - After training, compute final MSE on test set
