@@ -42,7 +42,7 @@ def hypothesis(input_matrix, weight_vector, bias_vector):
 def compute_loss(predicted, actual):
     loss = np.mean(predicted - actual)**2
     return loss
-def compute_gradient(X, y, y_pred):
+def compute_gradient(X, y, y_pred): # Proven on iPad
     error = y_pred - y
     dw = ((1/len(X)) * (error.T @ X))
     bw = np.mean(error)
@@ -82,36 +82,3 @@ print(test_loss)
 # === 8. Wrap up ===
 
 
-# === Plot 3D regression surface + ACTUAL TEST DATA GRID ===
-
-# Step 1: Use min/max from your actual X_test
-area_min, area_max = X_test[:, 0].min(), X_test[:, 0].max()
-bath_min, bath_max = X_test[:, 1].min(), X_test[:, 1].max()
-
-area_vals = np.linspace(area_min, area_max, 50)
-bathroom_vals = np.linspace(bath_min, bath_max, 50)
-A, B = np.meshgrid(area_vals, bathroom_vals)
-
-# Step 2: Create input pairs from grid and predict using hypothesis()
-grid_inputs = np.column_stack((A.ravel(), B.ravel()))
-Z = hypothesis(grid_inputs, w, b).reshape(A.shape)
-
-# Step 3: Plot surface + your actual test data points
-fig = plt.figure(figsize=(10, 7))
-ax = fig.add_subplot(111, projection='3d')
-
-# Plot regression surface
-ax.plot_surface(A, B, Z, cmap="viridis", alpha=0.7)
-
-# Overlay test points (actual data)
-ax.scatter(X_test[:, 0], X_test[:, 1], y_test, color='r', label='Actual Test Points', s=20)
-
-# Labels + legend
-ax.set_xlabel("Normalized Area")
-ax.set_ylabel("Normalized Bathrooms")
-ax.set_zlabel("Normalized Price")
-ax.set_title("Regression Surface with Real Test Data Overlay")
-ax.legend()
-
-plt.tight_layout()
-plt.show()
