@@ -2,8 +2,10 @@
 
 ## My Learning Story
 
+# UPDATE 5/30/2025 - Hi Mates! Currently completing a Bootcamp for Python for Data Science, so there is a short pause on this repository as I build ironclad foundations!
+
 Welcome to my machine learning journey! This repository is more than just code—it's a living document of my growth as a Python developer and ML practitioner. Here, you'll find:
-UPDATE 5/30/2025 - Hi Mates! Currently completing a Bootcamp for Python for Data Science, so there is a short pause on this repository as I build ironclad foundations!
+
 - **Progress Tracking**: From messy data wrangling to deploying production-ready models
 - **Skill Evolution**: Concrete milestones in ML engineering, deep learning, and MLOps
 - **Project Artifacts**: Real-world implementations with increasing complexity
